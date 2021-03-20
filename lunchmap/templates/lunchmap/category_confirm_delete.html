@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% block content %}
+
+<h1>Delete video information</h1>
+<p>'Do you want to delete {{ object.name }} ?</p>
+<form action='' method='post'>{% csrf_token %}
+    <button type='submit' class='submit delete'>Delete</button>
+</form>
+
+<div>
+    <p><a href='JavaScript:history.back()'>&lt; Back</a></p>
+</div>
+
+{% endblock %}

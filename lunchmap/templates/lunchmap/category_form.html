@@ -1,0 +1,14 @@
+{% extends './base.html' %}
+{% block content %}
+
+    <h1>{{ object|yesno:'Updated,Creating'}} video information</h1>
+
+    <form action='' method='post'>{% csrf_token %}
+        {{ form.as_p }}
+        <button type='submit' class='submit'>{{ object|yesno:'Updated,Creating'}}</button>
+    </form>
+    <div>
+        <a href='JavaScript:history.back()'>&lt; Back</a>
+    </div>
+
+{% endblock %}

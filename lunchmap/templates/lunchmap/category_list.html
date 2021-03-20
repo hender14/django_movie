@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% block content %}
+
+    <h1>Video list</h1>
+    <table class='table table-striped table-hover'>
+        <tr>
+            <th>Thumb</th><th>Title</th><th>Abstract</th><th>Last updated</th>
+        </tr>
+        {% for shop in object_list %}
+        <tr>
+            <td>
+                {% load static %}
+                <img src="/media/{{ shop.photo1 }}" width="180" height="120" alt="My image"/>
+            </td>
+            <td><a href='{% url "lunchmap:detail" shop.pk %}'>{{ shop.name }}</a></td>
+            <td>{{ shop.description }}</td>
+            <td>{{ shop.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <div>
+        <a href='{% url "lunchmap:create" %}'>Upload</a>
+    </div>
+
+{% endblock %}

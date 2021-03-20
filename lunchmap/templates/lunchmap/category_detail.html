@@ -1,0 +1,28 @@
+{% extends './base.html' %}
+{% block content %}
+    <h1>{{ category.name }}</h1>
+    <div>
+        <p>{{ category.description }}</p>
+        <p>{{ category.updated_at }}</p>
+    </div>
+
+    <!-- <iframe id='map'
+        src='https://www.google.com/maps/embed/v1/place?key=AIzaSyCSWcvY6-xfO9CLvrJOm_l3m12vpSAeddU&q={{ shop.address }}'
+        width='100%'
+        height='320'
+        frameborder='0'>
+    </iframe> -->
+    <div>
+        <a href='{% url "lunchmap:index" %}'>List</a>
+        <a> / </a>
+        <a href='{% url "lunchmap:update" category.pk %}'>Edit</a>
+        <a> / </a>
+        <a href='{% url "lunchmap:delete" category.pk %}'>Delete</a>
+    </div>
+    <hr>
+    {% load static %}
+    <p>{{ category.photo2 }}</p>
+        <video id="video_content" src="/media/{{ category.photo2 }}" controls></video>
+        <img src="/media/{{ category.photo1 }}" alt="My image"/>
+    <hr>
+{% endblock %}
