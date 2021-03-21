@@ -3,7 +3,7 @@ kubectl run PROJECT_NAME --image=IMAGE_NAME --port=8080pipeline {
   environment {
     DOCKERHUB_USER = "hender14"
     BUILD_HOST = "root@192.168.128.171"
-    PROD_HOST = "root@192.168.128.170"
+    PROD_HOST = "root@192.168.128.171"
     BUILD_TIMESTAMP = sh(script: "date +%Y%m%d-%H%M%S", returnStdout: true).trim()
   }
   stages {
