@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  db:
+    image: postgres
+    container_name: django_db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - dockerkvs_redis_volume:/data
+  web: 
+    image: ${DOCKERHUB_USER}/django_web:${BUILD_TIMESTAMP}
+    container_name: django_web
+    restart: unless-stopped
+    command: python manage.py runserver 0.0.0.0:8000
+    depends_on:
+      - db
+    ports:
+      - 8000:8000
+
+
+volumes:
+  dockerkvs_redis_volume:
+    driver: local 
