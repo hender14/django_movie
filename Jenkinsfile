@@ -1,4 +1,4 @@
-kubectl run PROJECT_NAME --image=IMAGE_NAME --port=8080pipeline {
+pipeline {
   agent any
   environment {
     DOCKERHUB_USER = "hender14"
