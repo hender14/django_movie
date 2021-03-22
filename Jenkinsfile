@@ -26,17 +26,13 @@ pipeline {
     stage('Test') {
       steps {
 //        sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml run web python manage.py test"
-        // sh "docker -H ssh://${BUILD_HOST} container exec dockerkvs_webtest pytest -v test_static.py"
-        // sh "docker -H ssh://${BUILD_HOST} container exec dockerkvs_webtest pytest -v test_selenium.py"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml down"
       }
     }
     stage('Register') {
       steps {
         sh "docker -H ssh://${BUILD_HOST} tag django_web ${DOCKERHUB_USER}/django_web:${BUILD_TIMESTAMP}"
-        // sh "docker -H ssh://${BUILD_HOST} tag dockerkvs_app ${DOCKERHUB_USER}/dockerkvs_app:${BUILD_TIMESTAMP}"
         sh "docker -H ssh://${BUILD_HOST} push ${DOCKERHUB_USER}/django_web:${BUILD_TIMESTAMP}"
-        // sh "docker -H ssh://${BUILD_HOST} push ${DOCKERHUB_USER}/dockerkvs_app:${BUILD_TIMESTAMP}"
       }
     }
     stage('Deploy') {
