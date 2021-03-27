@@ -10,13 +10,13 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - postgresql_volume:/var/lib/postgresql/data
   web:
     build: .
     image: django_web
     container_name: django_web
     restart: "no"
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - .:/code
     ports:
@@ -24,6 +24,6 @@ services:
     depends_on:
       - db
 
-# volumes:
-#   postgresql_volume:
-#     driver: local
+volumes:
+  postgresql_volume:
+    driver: local
