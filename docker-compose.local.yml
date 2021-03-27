@@ -6,7 +6,7 @@ services:
     container_name: django_db
     restart: unless-stopped
     environment:
-        DEBUG: "true"
+        # DEBUG: "true"
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
