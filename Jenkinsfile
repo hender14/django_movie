@@ -20,6 +20,7 @@ pipeline {
         sh "docker -H ssh://${BUILD_HOST} volume prune -f"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml build --no-cache"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml up -d"
+        sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml up -d"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml ps"
       }
     }
