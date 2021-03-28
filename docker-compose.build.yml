@@ -3,7 +3,7 @@ version: "3.7"
 services:
   web:
     build:
-      context: ./code/
+      context: .
       dockerfile: Dockerfile
     image: django_web
     container_name: django_web
