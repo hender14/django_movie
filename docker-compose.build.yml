@@ -13,6 +13,7 @@ services:
       - postgresql_volume:/var/lib/postgresql/data
   web:
     build: .
+    context: .
     image: django_web
     container_name: django_web
     restart: "no"
