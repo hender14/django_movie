@@ -25,7 +25,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml run web python manage.py test"
+        sh "docker -H ssh://${BUILD_HOST} container exec django_web python manage.py test"
         sh "docker-compose -H ssh://${BUILD_HOST} -f docker-compose.build.yml down"
       }
     }
