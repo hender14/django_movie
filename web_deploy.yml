@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: django_web
-        image: hender14/django_web
+        image: hender14/django_web:20210408-155519
         ports:
         - name: http
           containerPort: 80

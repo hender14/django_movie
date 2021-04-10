@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  # name: web-service
+spec:
+  selector:
+    pod: web
+    # svc2pod: web
+  ports:
+  - port: 8000
+    targetPort: http
+    nodePort: 30000
+  # sessionAffinity: ClientIP
+  type: NodePort
+  # type: LoadBalancer
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web
+  # name: web-pod
+  labels: 
+    pod: web
+    # svc2pod: web
+spec:
+  containers:
+  - name: web
+  # - name: django_web
+    image: hender14/django_web:v1.0
+    ports:
+    - name: http
+      containerPort: 8000
+    env:
+    - name: POSTGRES_PASSWORD
+      value: postgres
+    - name: POSTGRES_DB
+      value: postgres
+    - name: POSTGRES_USER
+      value: postgres
+    # - name: POSTGRES_HOST_AUTH_METHOD
+    #   value: trust

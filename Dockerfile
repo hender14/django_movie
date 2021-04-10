@@ -8,3 +8,5 @@ RUN pip install -r requirements.txt && apt update && apt-get install -y libgl1-m
 # COPY . /code/
 COPY . .
 # COPY manage.py .
+ENTRYPOINT ["python", "manage.py", "migrate"]
+ENTRYPOINT ["python", "manage.py", "runserver", "0.0.0.0:8000"]

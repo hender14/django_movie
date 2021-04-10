@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: db
+  # name: db-service
+spec:
+  selector:
+    pod: db
+    # svc2pod: db
+  ports:
+  - port: 5432
+    targetPort: postgres
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: db
+  # name: db-pod
+  labels: 
+    pod: db
+    # svc2pod: db
+spec:
+  containers:
+  - name: db
+  # - name: django_db
+    image: postgres
+    ports:
+    - name: postgres
+      containerPort: 5432
+    env:
+    - name: POSTGRES_PASSWORD
+      value: postgres
+    - name: POSTGRES_DB
+      value: postgres
+    - name: POSTGRES_USER
+      value: postgres
+    # - name: POSTGRES_HOST_AUTH_METHOD
+    #   value: trust
