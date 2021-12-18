@@ -15,7 +15,7 @@ services:
     depends_on:
       - db
   db:
-    image: postgres
+    image: postgres:13.0
     container_name: django_db
     restart: "no"
     environment:

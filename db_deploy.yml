@@ -10,13 +10,13 @@ spec:
     targetPort: db
   type: ClusterIP
   
-  ---
+---
 apiVersion: v1
 kind: Pod
 metadata:
   name: db-pod
   labels: 
-    pod: db
+    svc2pod: db
 spec:
   containers:
   - name: django_db

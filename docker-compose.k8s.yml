@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   db:
-    image: postgres
+    image: postgres:13.0
     container_name: django_db
     restart: "no"
     environment:

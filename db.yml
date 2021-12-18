@@ -25,7 +25,7 @@ spec:
   containers:
   - name: db
   # - name: django_db
-    image: postgres
+    image: postgres:13.0
     ports:
     - name: postgres
       containerPort: 5432
